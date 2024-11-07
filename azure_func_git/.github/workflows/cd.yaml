@@ -15,23 +15,33 @@ env:
   ENVIRONMENT_NAME: "eng"
 
 jobs:
-  terraform:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@3
+      - name: Checkout code
+      - uses: actions/checkout@v2
 
-      - name: hashicorp/setup-terraform@3
-        uses: actions/checkout@3 #uses
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.5.5
           terraform_wrapper: false
+
+      #- name: Terraform Plan
+      #  run: terraform plan #-out=tfplan
 
       - name: Terraform Apply
         env:
           ARM_SUBSCRIPTION_ID: ${{ var.ARM_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ var.ARM_TENANT_ID }}
-          ARM_CLIENT_ID: ${{ var.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+          #ARM_CLIENT_ID: ${{ var.ARM_CLIENT_ID }}
+          #ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           BACKEND_RESOURCE_GROUP: ${{ var.BACKEND_RESOURCE_GROUP }}
           BACKEND_STORAGE_ACCOUNT_NAME: ${{ var.BACKEND_STORAGE_ACCOUNT_NAME }}
           BACKEND_STORAGE_CONTAINER_NAME: ${{ var.BACKEND_STORAGE_CONTAINER_NAME }}
