@@ -27,7 +27,7 @@ jobs:
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Checkout code #
-        run: actions/checkout@v2
+        run: actions/checkout@v3
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Restore dependencies #
