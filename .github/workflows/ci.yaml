@@ -29,6 +29,11 @@ jobs:
       # - name: Checkout code #
       #   run: actions/checkout@v3
       #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      
+      # Install Azure Functions Tools
+      - name: Install Azure Functions Tools
+        run: |
+          dotnet tool install --global Microsoft.Azure.Functions.Tools
 
       - name: Restore dependencies #
         run: dotnet restore
