@@ -6,11 +6,11 @@ on:
       - main
     paths:
       #- 'src/terraform/**'
-      - 'core_skill/azure_func_git/terraform/**''
-      - 'core_skill/azure_func_git/.github/workflow/**'
+      - 'azure_func_git/terraform/**''
+      - '.github/workflows/**'
 
 env:
-  WORKING_DIRECTORY: "core_skill/azure_func_git/terraform/"
+  WORKING_DIRECTORY: "azure_func_git/terraform/"
   APPLICATION_NAME: "azcld"
   ENVIRONMENT_NAME: "eng"
 
@@ -42,7 +42,7 @@ jobs:
           ARM_TENANT_ID: ${{ var.ARM_TENANT_ID }}
           #ARM_CLIENT_ID: ${{ var.ARM_CLIENT_ID }}
           #ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          BACKEND_RESOURCE_GROUP: ${{ var.BACKEND_RESOURCE_GROUP }}
+          BACKEND_RESOURCE_GROUP_NAME: ${{ var.BACKEND_RESOURCE_GROUP }}
           BACKEND_STORAGE_ACCOUNT_NAME: ${{ var.BACKEND_STORAGE_ACCOUNT_NAME }}
           BACKEND_STORAGE_CONTAINER_NAME: ${{ var.BACKEND_STORAGE_CONTAINER_NAME }}
           TF_VAR_application_name: ${{ env.APPLICATION_NAME }}
