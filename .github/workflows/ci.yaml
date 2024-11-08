@@ -28,7 +28,7 @@ jobs:
 
       - name: Checkout code #
         run: actions/checkout@v2
-        #working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Restore dependencies #
         run: dotnet restore
