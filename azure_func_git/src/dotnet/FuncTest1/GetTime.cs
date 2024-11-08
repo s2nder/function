@@ -1,3 +1,10 @@
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 public static class TimeFunction
 {
     [FunctionName("GetTimeInCity")]
