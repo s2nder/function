@@ -9,7 +9,7 @@
 .terraform/
 
 # Ignore variable files (often contain sensitive data)
-*.tfvars
+#*.tfvars
 
 # Ignore environment-specific files
 *.auto.tfvars
