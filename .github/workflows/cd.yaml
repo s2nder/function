@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure_func_git/terraform/**''
+      - 'azure_func_git/terraform/**'
       - '.github/workflows/**'
 
 env:
