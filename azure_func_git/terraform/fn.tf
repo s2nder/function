@@ -5,8 +5,8 @@ locals {
 
 resource "azurerm_storage_account" "functions" {
   name = local.lin_name
-  #resource_group_name      = azurerm_resource_group.main.name
-  resource_group_name = var.resource_group_name
+  resource_group_name      = azurerm_resource_group.main.name
+  #resource_group_name = var.resource_group_name
   #location                 = azurerm_resource_group.main.location
   location                 = var.location
   account_tier             = "Standard"
@@ -17,14 +17,14 @@ resource "azurerm_user_assigned_identity" "main" {
   name = "user-assigned-identity-${var.application_name}-${var.environment_name}"
   #location            = azurerm_resource_group.main.location
   location = var.location
-  #resource_group_name = azurerm_resource_group.main.name
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.main.name
+  #resource_group_name = var.resource_group_name
 }
 
 resource "azurerm_service_plan" "main" {
   name = "asp-${var.application_name}-${var.environment_name}"
-  #resource_group_name = azurerm_resource_group.main.name
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.main.name
+  #resource_group_name = var.resource_group_name
   #location            = azurerm_resource_group.main.location
   location = var.location
   os_type  = "Linux"
@@ -33,8 +33,8 @@ resource "azurerm_service_plan" "main" {
 
 resource "azurerm_linux_function_app" "main" {
   name = "linux-function-app-${var.application_name}-${var.environment_name}"
-  #resource_group_name = azurerm_resource_group.main.name
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.main.name
+  #resource_group_name = var.resource_group_name
   #location            = azurerm_resource_group.main.location
   location = var.location
 

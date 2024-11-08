@@ -56,19 +56,19 @@ jobs:
 
           terraform plan
 
-      - name: Terraform Apply
-        env:
-          ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}
-          ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
-          ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-          BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP }}
-          BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
-          BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
-          BACKEND_STORAGE_ACCOUNT_KEY: ${{ secrets.BACKEND_STORAGE_ACCOUNT_KEY }}
-          TF_VAR_application_name: ${{ env.APPLICATION_NAME }}
-          TF_VAR_environment_name: ${{ env.ENVIRONMENT_NAME }}
-          TF_BACKEND_KEY: ${{ env.APPLICATION_NAME }}-${{ env.ENVIRONMENT_NAME }}
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: |
-          terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   env:
+      #     ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}
+      #     ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
+      #     ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
+      #     ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      #     BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP }}
+      #     BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
+      #     BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
+      #     BACKEND_STORAGE_ACCOUNT_KEY: ${{ secrets.BACKEND_STORAGE_ACCOUNT_KEY }}
+      #     TF_VAR_application_name: ${{ env.APPLICATION_NAME }}
+      #     TF_VAR_environment_name: ${{ env.ENVIRONMENT_NAME }}
+      #     TF_BACKEND_KEY: ${{ env.APPLICATION_NAME }}-${{ env.ENVIRONMENT_NAME }}
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      #   run: |
+      #     terraform apply -auto-approve

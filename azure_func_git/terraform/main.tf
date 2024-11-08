@@ -1,8 +1,8 @@
-# resource "azurerm_resource_group" "main" {
-#   #name     = "rg-${var.application_name}-${var.environment_name}"
-#   name     = var.resource_group_name
-#   location = var.location
-# }
+resource "azurerm_resource_group" "main" {
+  name     = "rg-${var.application_name}-${var.environment_name}"
+  #name     = var.resource_group_name
+  location = var.location
+}
 
 # resource "random_string" "name" {
 #   length  = 8
