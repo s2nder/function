@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <!-- Reference to Azure Functions SDK -->
+    <!-- This package is required for Azure Functions HTTP trigger -->
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="4.0.1" />
-    <!-- PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" /-->
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.0" />
     <!-- Add other necessary packages here -->
   </ItemGroup>
