@@ -9,16 +9,27 @@ on:
 
 env:
   DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
+  WORKING_DIRECTORY: ./azure_func_git/src/dotnet/FuncTest1
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Setup .Net Core
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+      
       - name: Install Dependencies
         run: dotnet restore
-        working-directory: ./azure_func_git/src/dotnet/FuncTest1
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal --filter Category=Unit
+        working-directory: ${{ env.WORKING_DIRECTORY }}
