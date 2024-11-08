@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'azure_func_git/src/FuncTest1/**'
+
+env:
+  DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .Net Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Install Dependencies
+        run: dotnet restore
+        working-directory: ./azure_func_git/src/dotnet/FuncTest1
