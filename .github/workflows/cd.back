@@ -14,7 +14,7 @@ env:
   ENVIRONMENT_NAME: "eng"
 
 jobs:
-  build-and-deploy:
+  terraform:
     runs-on: ubuntu-latest
     
     steps:
