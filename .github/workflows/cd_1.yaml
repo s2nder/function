@@ -14,7 +14,7 @@ env:
   ENVIRONMENT_NAME: "eng"
 
 jobs:
-  terraform:
+  terraform-apply:
     runs-on: ubuntu-latest
     
     steps:
