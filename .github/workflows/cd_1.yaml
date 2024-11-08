@@ -54,7 +54,7 @@ jobs:
             -backend-config="key=$TF_BACKEND_KEY" \
             -backend-config="access_key=$BACKEND_STORAGE_ACCOUNT_KEY"
 
-          terraform plan
+          terraform plan -var-file="terraform.tfvars"
 
       - name: Terraform Apply
         env:
