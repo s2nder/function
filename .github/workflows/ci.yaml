@@ -8,7 +8,7 @@ on:
     - 'azure_func_git/src/FuncTest1/**'
 
 env:
-  DOTNET_VERSION: '6.0.401' # The .NET SDK version to use
+  DOTNET_VERSION: '6.0.x' # The .NET SDK version to use (6.0.401)
   WORKING_DIRECTORY: ./azure_func_git/src/dotnet/FuncTest1
 
 jobs:
@@ -22,14 +22,22 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
-      - name: Install Dependencies
+      # - name: Install Dependencies
+      #   run: dotnet restore
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Checkout code #
+        run: actions/checkout@v2
+        #working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Restore dependencies #
         run: dotnet restore
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
-      - name: Build
+      - name: Build the project
         run: dotnet build --configuration Release --no-restore
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
-      - name: Test
+      - name: Run Test
         run: dotnet test --no-restore --verbosity normal --filter Category=Unit
         working-directory: ${{ env.WORKING_DIRECTORY }}
