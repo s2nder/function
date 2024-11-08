@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "azure_func_git", "azure_func_git", "{15053DAD-1D80-43AF-B7FE-E617AF538706}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5233DA9C-E105-4E3C-BAF2-AD3B29A0C0FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{27C61F2B-F5B2-4237-B150-7420EB6B75ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetTime", "azure_func_git\src\dotnet\FuncTest1\GetTime.csproj", "{54F1B2A9-922B-4D49-9D74-96321363AD15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54F1B2A9-922B-4D49-9D74-96321363AD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F1B2A9-922B-4D49-9D74-96321363AD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F1B2A9-922B-4D49-9D74-96321363AD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F1B2A9-922B-4D49-9D74-96321363AD15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5233DA9C-E105-4E3C-BAF2-AD3B29A0C0FB} = {15053DAD-1D80-43AF-B7FE-E617AF538706}
+		{27C61F2B-F5B2-4237-B150-7420EB6B75ED} = {5233DA9C-E105-4E3C-BAF2-AD3B29A0C0FB}
+		{54F1B2A9-922B-4D49-9D74-96321363AD15} = {27C61F2B-F5B2-4237-B150-7420EB6B75ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07DE5A13-7843-49C4-B829-17629DFF5095}
+	EndGlobalSection
+EndGlobal
