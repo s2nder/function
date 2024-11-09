@@ -1,34 +1,35 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-public static class TimeFunction
+namespace FuncTest1
 {
-    [FunctionName("GetTimeInCity")]
-    public static async Task<HttpResponseMessage> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "time/{city}")] HttpRequestMessage req,
-        string city,
-        ILogger log)
+    public static class GetTime
     {
-        var timeZones = new Dictionary<string, string>
+        [FunctionName("GetTime")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            ILogger log)
         {
-            { "newyork", "Eastern Standard Time" },
-            { "london", "GMT Standard Time" },
-            { "tokyo", "Tokyo Standard Time" }
-        };
+            log.LogInformation("C# HTTP trigger function processed a request.");
 
-        if (!timeZones.ContainsKey(city.ToLower()))
-        {
-            return req.CreateResponse(HttpStatusCode.BadRequest, "City not supported");
+            string name = req.Query["name"];
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            name = name ?? data?.name;
+
+            string responseMessage = string.IsNullOrEmpty(name)
+                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+
+            return new OkObjectResult(responseMessage);
         }
-
-        var timeZone = timeZones[city.ToLower()];
-        TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
-        DateTime currentTime = TimeZoneInfo.ConvertTime(DateTime.UtcNow, tz);
-
-        return req.CreateResponse(HttpStatusCode.OK, new { city = city, time = currentTime });
     }
 }

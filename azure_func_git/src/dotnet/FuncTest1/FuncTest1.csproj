@@ -9,9 +9,18 @@
   <ItemGroup>
     <!-- Reference to Azure Functions SDK -->
     <!-- This package is required for Azure Functions HTTP trigger -->
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="4.0.1" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.0" />
+    <!-- ackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="4.0.1" /-->
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.4.0" />
     <!-- Add other necessary packages here -->
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
