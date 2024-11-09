@@ -1,17 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Functions">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>   <!-- Use the appropriate version -->
-    <AzureFunctionsVersion>v4</AzureFunctionsVersion>  <!-- Specify Azure Functions version -->
+    <TargetFramework>net6.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <!-- Reference to Azure Functions SDK -->
-    <!-- This package is required for Azure Functions HTTP trigger -->
-    <!-- ackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="4.0.1" /-->
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.4.0" />
-    <!-- Add other necessary packages here -->
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -22,5 +15,4 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-
 </Project>
