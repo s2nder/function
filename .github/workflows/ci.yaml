@@ -22,9 +22,9 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
-      # - name: Install Dependencies
-      #   run: dotnet restore
-      #   working-directory: ${{ env.WORKING_DIRECTORY }}
+      - name: Install Dependencies
+        run: dotnet restore
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       # - name: Checkout code #
       #   run: actions/checkout@v3
@@ -35,9 +35,9 @@ jobs:
       #   run: |
       #     dotnet tool install --global Microsoft.Azure.Functions.Tools
 
-      - name: Restore dependencies #
-        run: dotnet restore
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+      # - name: Restore dependencies #
+      #   run: dotnet restore
+      #   working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Build the project
         run: dotnet build --configuration Release --no-restore
