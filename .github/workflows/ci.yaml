@@ -15,10 +15,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Setup .Net Core
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       
@@ -60,7 +60,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}/publish
 
       - name: Upload Deployment Package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: function-deployment
           path: ${{ env.WORKING_DIRECTORY }}/deployment.zip
