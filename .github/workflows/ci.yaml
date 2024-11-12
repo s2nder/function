@@ -51,7 +51,7 @@ jobs:
         run: dotnet nuget locals all --clear
 
       - name: Publish
-        run: dotnet publish .azure_func_git/src/dotnet/FuncTest1/FuncTest1.csproj -c Release -o ./publish
+        run: dotnet publish azure_func_git/src/dotnet/FuncTest1/FuncTest1.csproj -c Release -o ./publish
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Generate Deployment Package
