@@ -49,3 +49,18 @@ jobs:
 
       - name: Clear NuGet cache
         run: dotnet nuget locals all --clear
+
+      - name: Publish
+        run: dotnet publish **/FuncTest1.csproj -c Release -o ./publish
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Generate Deployment Package
+        run: |
+          zip -r ../deployment.zip ./
+        working-directory: ${{ env.WORKING_DIRECTORY }}/publish
+
+      - name: Upload Deployment Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: function-deployment
+          path: ${{ env.WORKING_DIRECTORY }}/deployment.zip
